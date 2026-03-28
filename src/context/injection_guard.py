@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 _LOG_PATH = Path("logs/injection_attempts.log")
 
 _PATTERNS: list[tuple[str, str]] = [
-    (r"ignore\s+(previous|above|all)\s+instructions?", "ignore_instructions"),
+    (r"ignore\s+(previous|above|all)(\s+\w+)*\s+instructions?", "ignore_instructions"),
     (r"you\s+are\s+now\s+(a|an)\b",                   "persona_override"),
     (r"system\s*:",                                     "system_prompt_injection"),
     (r"<\s*instructions?\s*>",                          "xml_instruction_tag"),
