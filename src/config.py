@@ -6,6 +6,7 @@ class Settings(BaseSettings):
 
     hf_token: str
     groq_api_key: str
+    gemini_api_key: str = ""
 
 
 settings = Settings()

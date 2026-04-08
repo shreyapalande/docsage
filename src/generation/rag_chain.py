@@ -16,8 +16,9 @@ Rules:
 1. Cite every factual claim using [doc_id:chunk_index] format inline, e.g. "BERT uses masked language modeling [2104.08378:3]."
 2. Synthesize across documents — if no single document fully answers the question, combine relevant information from multiple documents to form a complete answer.
 3. Only say "I don't have enough information in the provided documents to answer this." if the documents contain absolutely no relevant information.
-4. Never fabricate information not present in the documents.
-5. Be concise and technical."""
+4. Only cite doc IDs that appear in the <documents> block. Never invent or guess doc IDs.
+5. Never fabricate information not present in the documents.
+6. Be concise and technical."""
 
 _LOW_CONFIDENCE_PREFIX = "⚠️ Low retrieval confidence — treat this answer with caution.\n\n"
 
@@ -58,10 +59,11 @@ class RAGChain:
         citations = extract_citations(answer, chunks)
 
         return {
-            "answer":        answer,
-            "citations":     citations,
-            "chunks_used":   len(chunks),
-            "rerank_scores": rerank_scores,
-            "usage":         usage,
-            "low_confidence": low_confidence,
+            "answer":            answer,
+            "citations":         citations,
+            "chunks_used":       len(chunks),
+            "retrieved_chunks":  chunks,
+            "rerank_scores":     rerank_scores,
+            "usage":             usage,
+            "low_confidence":    low_confidence,
         }

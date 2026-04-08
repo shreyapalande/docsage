@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(python -c \":*)",
-      "Bash(.venv/Scripts/python -c \":*)"
+      "Bash(.venv/Scripts/python -c \":*)",
+      "Bash(cat /d/projects/docsage/.github/workflows/*)",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''d:/projects/docsage/data/benchmark.json''\\)\\); print\\(type\\(d\\)\\); print\\(list\\(d.keys\\(\\)\\)\\); print\\(f''Total questions: {len\\(d[\"\"questions\"\"]\\)}''\\)\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''d:/projects/docsage/data/benchmark.json''\\)\\); print\\(d[''ground_truths''][0][:300]\\)\")",
+      "Bash(.venv/Scripts/python scripts/convert_aragog.py)"
     ]
   }
 }
